@@ -1,0 +1,2 @@
+# Netlify redirect rules removed for SSR deployment
+# Keep this file empty or delete it if you want Netlify to route through the SSR function.

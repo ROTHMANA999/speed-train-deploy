@@ -14,6 +14,7 @@ export function Nav() {
     { to: "/about", key: "nav_about" },
     { to: "/programs", key: "nav_programs" },
     { to: "/recruitment", key: "nav_recruit" },
+    { to: "/images", key: "nav_images" },
     { to: "/contact", key: "nav_contact" },
   ];
 

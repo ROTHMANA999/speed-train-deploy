@@ -78,36 +78,52 @@ function ErrorComponent({ error, reset }: { error: Error; reset: () => void }) {
 }
 
 export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()({
-  head: () => ({
-    meta: [
-      { charSet: "utf-8" },
-      { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "CSAT Academy — Tactical Training & Workforce Deployment in Cambodia" },
-      {
-        name: "description",
-        content:
-          "Cambodian Speed Accurate Tactical Co., Ltd. — professional training in security, firefighting, drone operation, and Chinese language, with direct deployment to partner companies.",
-      },
-      { name: "author", content: "Cambodian Speed Accurate Tactical Co., Ltd." },
-      { property: "og:title", content: "CSAT Academy — Tactical Training & Workforce Deployment" },
-      {
-        property: "og:description",
-        content:
-          "Professional workforce training and deployment academy in Cambodia. Security, firefighting, drone, and Chinese language programs.",
-      },
-      { property: "og:type", content: "website" },
-      { name: "twitter:card", content: "summary_large_image" },
-    ],
-    links: [
-      { rel: "stylesheet", href: appCss },
-      { rel: "preconnect", href: "https://fonts.googleapis.com" },
-      { rel: "preconnect", href: "https://fonts.gstatic.com", crossOrigin: "" },
-      {
-        rel: "stylesheet",
-        href: "https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Oswald:wght@500;600;700&family=Kantumruy+Pro:wght@400;500;700&display=swap",
-      },
-    ],
-  }),
+  head: () => {
+    // derive site URL from environment when available so social previews use absolute URLs
+    // fall back to a reasonable Netlify preview domain if not set
+    const siteUrl = (import.meta.env.VITE_SITE_URL as string) ?? "https://cambodiaspeed.netlify.app";
+
+    return {
+      meta: [
+        { charSet: "utf-8" },
+        { name: "viewport", content: "width=device-width, initial-scale=1" },
+        { title: "CSAT Academy — Tactical Training & Workforce Deployment in Cambodia" },
+        {
+          name: "description",
+          content:
+            "Cambodian Speed Accurate Tactical Co., Ltd. — professional training in security, firefighting, drone operation, and Chinese language, with direct deployment to partner companies.",
+        },
+        { name: "author", content: "Cambodian Speed Accurate Tactical Co., Ltd." },
+        { property: "og:title", content: "CSAT Academy — Tactical Training & Workforce Deployment" },
+        {
+          property: "og:description",
+          content:
+            "Professional workforce training and deployment academy in Cambodia. Security, firefighting, drone, and Chinese language programs.",
+        },
+        { property: "og:type", content: "website" },
+        { property: "og:url", content: siteUrl },
+        { property: "og:image", content: `${siteUrl}/logo.png` },
+        { property: "og:image:alt", content: "CSAT Academy logo" },
+        { name: "twitter:card", content: "summary_large_image" },
+        { name: "twitter:title", content: "CSAT Academy — Tactical Training & Deployment" },
+        { name: "twitter:description", content: "Professional training and workforce deployment in Cambodia." },
+        { name: "twitter:image", content: `${siteUrl}/logo.png` },
+        { name: "theme-color", content: "#0b1220" },
+      ],
+      links: [
+        { rel: "icon", href: "/logo.png" },
+        { rel: "apple-touch-icon", href: "/logo.png" },
+        { rel: "manifest", href: "/manifest.json" },
+        { rel: "stylesheet", href: appCss },
+        { rel: "preconnect", href: "https://fonts.googleapis.com" },
+        { rel: "preconnect", href: "https://fonts.gstatic.com", crossOrigin: "" },
+        {
+          rel: "stylesheet",
+          href: "https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Oswald:wght@500;600;700&family=Kantumruy+Pro:wght@400;500;700&display=swap",
+        },
+      ],
+    };
+  },
   shellComponent: RootShell,
   component: RootComponent,
   notFoundComponent: NotFoundComponent,

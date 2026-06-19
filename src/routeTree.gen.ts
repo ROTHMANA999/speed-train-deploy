@@ -12,6 +12,7 @@ import { Route as rootRouteImport } from './routes/__root'
 import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
 import { Route as RecruitmentRouteImport } from './routes/recruitment'
 import { Route as ProgramsRouteImport } from './routes/programs'
+import { Route as ImagesRouteImport } from './routes/images'
 import { Route as ContactRouteImport } from './routes/contact'
 import { Route as ApplyRouteImport } from './routes/apply'
 import { Route as AboutRouteImport } from './routes/about'
@@ -30,6 +31,11 @@ const RecruitmentRoute = RecruitmentRouteImport.update({
 const ProgramsRoute = ProgramsRouteImport.update({
   id: '/programs',
   path: '/programs',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ImagesRoute = ImagesRouteImport.update({
+  id: '/images',
+  path: '/images',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ContactRoute = ContactRouteImport.update({
@@ -58,6 +64,7 @@ export interface FileRoutesByFullPath {
   '/about': typeof AboutRoute
   '/apply': typeof ApplyRoute
   '/contact': typeof ContactRoute
+  '/images': typeof ImagesRoute
   '/programs': typeof ProgramsRoute
   '/recruitment': typeof RecruitmentRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
@@ -67,6 +74,7 @@ export interface FileRoutesByTo {
   '/about': typeof AboutRoute
   '/apply': typeof ApplyRoute
   '/contact': typeof ContactRoute
+  '/images': typeof ImagesRoute
   '/programs': typeof ProgramsRoute
   '/recruitment': typeof RecruitmentRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
@@ -77,6 +85,7 @@ export interface FileRoutesById {
   '/about': typeof AboutRoute
   '/apply': typeof ApplyRoute
   '/contact': typeof ContactRoute
+  '/images': typeof ImagesRoute
   '/programs': typeof ProgramsRoute
   '/recruitment': typeof RecruitmentRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
@@ -88,6 +97,7 @@ export interface FileRouteTypes {
     | '/about'
     | '/apply'
     | '/contact'
+    | '/images'
     | '/programs'
     | '/recruitment'
     | '/sitemap.xml'
@@ -97,6 +107,7 @@ export interface FileRouteTypes {
     | '/about'
     | '/apply'
     | '/contact'
+    | '/images'
     | '/programs'
     | '/recruitment'
     | '/sitemap.xml'
@@ -106,6 +117,7 @@ export interface FileRouteTypes {
     | '/about'
     | '/apply'
     | '/contact'
+    | '/images'
     | '/programs'
     | '/recruitment'
     | '/sitemap.xml'
@@ -116,6 +128,7 @@ export interface RootRouteChildren {
   AboutRoute: typeof AboutRoute
   ApplyRoute: typeof ApplyRoute
   ContactRoute: typeof ContactRoute
+  ImagesRoute: typeof ImagesRoute
   ProgramsRoute: typeof ProgramsRoute
   RecruitmentRoute: typeof RecruitmentRoute
   SitemapDotxmlRoute: typeof SitemapDotxmlRoute
@@ -142,6 +155,13 @@ declare module '@tanstack/react-router' {
       path: '/programs'
       fullPath: '/programs'
       preLoaderRoute: typeof ProgramsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/images': {
+      id: '/images'
+      path: '/images'
+      fullPath: '/images'
+      preLoaderRoute: typeof ImagesRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/contact': {
@@ -180,6 +200,7 @@ const rootRouteChildren: RootRouteChildren = {
   AboutRoute: AboutRoute,
   ApplyRoute: ApplyRoute,
   ContactRoute: ContactRoute,
+  ImagesRoute: ImagesRoute,
   ProgramsRoute: ProgramsRoute,
   RecruitmentRoute: RecruitmentRoute,
   SitemapDotxmlRoute: SitemapDotxmlRoute,

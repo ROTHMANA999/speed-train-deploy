@@ -5,6 +5,7 @@
 
 [build.environment]
   NITRO_PRESET = "netlify"
+  VITE_SITE_URL = "https://cambodiaspeed.netlify.app"
 
 [[redirects]]
   from = "/*"

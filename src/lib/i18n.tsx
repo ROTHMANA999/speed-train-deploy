@@ -10,9 +10,13 @@ export const dict = {
   nav_about: { en: "About", km: "អំពីយើង" },
   nav_programs: { en: "Programs", km: "កម្មវិធី" },
   nav_recruit: { en: "Deployment", km: "ការដាក់ពង្រាយ" },
+  nav_images: { en: "Gallery", km: "រូបភាព" },
   nav_apply: { en: "Apply", km: "ចុះឈ្មោះ" },
   nav_contact: { en: "Contact", km: "ទំនាក់ទំនង" },
   apply_cta: { en: "Apply Now", km: "ចុះឈ្មោះឥឡូវ" },
+  images_title: { en: "The equipment used by the school to teach", km: "ឧបករណ៍ដែលសាលាយកមកបង្រៀន" },
+  images_lead: { en: "Browse our equipment and training environment to see the academy in action.", km: "មើលឧបករណ៍ និងបរិយាកាសបណ្តុះបណ្តាលរបស់យើង។" },
+  images_gallery_title: { en: "Training Equipment", km: "ឧបករណ៍បណ្តុះបណ្តាល" },
 
   // brand
   brand_full_en: { en: "CAMBODIAN SPEED ACCURATE TACTIALCO.,LTD", km: "CAMBODIAN SPEED ACCURATE TACTIALCO.,LTD" },

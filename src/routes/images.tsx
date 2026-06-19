@@ -14,6 +14,7 @@ import car8 from "@/assets/car8.png";
 // LOGO IMAGES
 import logoav1 from "@/assets/logoav1.png";
 import logoav2 from "@/assets/logoav2.png";
+import logoav3 from "@/assets/logoav3.png";
 import logohat from "@/assets/logohat.png";
 import logohat2 from "@/assets/logohat2.png";
 import logomoto from "@/assets/logomoto.png";
@@ -34,7 +35,7 @@ const logoImages = [
   logoav2,
   logohat,
   logohat2,
-  logomoto,
+  logoav3,
 ];
 
 export const Route = createFileRoute("/images")({
@@ -100,7 +101,7 @@ function ImagesPage() {
       <section className="bg-navy py-16">
         <div className="container-page">
           <h2 className="mb-6 text-xl font-bold uppercase tracking-widest text-gold">
-            Logos
+            ឯកសណ្ឋាន / Uniforms
           </h2>
 
           <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5">

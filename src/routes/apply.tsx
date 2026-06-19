@@ -1,9 +1,10 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useState } from "react";
 import { z } from "zod";
-import { CheckCircle2 } from "lucide-react";
+import { CheckCircle2, Loader2 } from "lucide-react"; // ថែម Loader2 សម្រាប់បង្ហាញពេលកំពុងរង់ចាំ Database
 import { useI18n } from "@/lib/i18n";
 import { programs } from "@/lib/programs";
+import { supabase } from "@/lib/supabase"; // 1. Import supabase client ដែលយើងបានបង្កើត
 
 export const Route = createFileRoute("/apply")({
   head: () => ({
@@ -26,11 +27,13 @@ const schema = z.object({
 });
 
 function ApplyPage() {
-  const { t, lang } = useI18n();
+  const { t } = useI18n();
   const [submitted, setSubmitted] = useState(false);
+  const [loading, setLoading] = useState(false); // 2. ថែម state សម្រាប់ loading
   const [errors, setErrors] = useState<Record<string, string>>({});
 
-  const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  // 3. ដូរទៅជា async function ដើម្បីប្រើប្រាស់ await ជាមួយ Supabase
+  const onSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const fd = new FormData(e.currentTarget);
     const data = {
@@ -40,6 +43,7 @@ function ApplyPage() {
       program: String(fd.get("program") ?? ""),
       address: String(fd.get("address") ?? ""),
     };
+    
     const res = schema.safeParse(data);
     if (!res.success) {
       const errs: Record<string, string> = {};
@@ -47,8 +51,28 @@ function ApplyPage() {
       setErrors(errs);
       return;
     }
+    
     setErrors({});
-    setSubmitted(true);
+    setLoading(true); // បើក Loading ពេលចាប់ផ្តើមផ្ញើទៅ Database
+
+    try {
+      // 4. បញ្ជូនទិន្នន័យទៅកាន់ Supabase Table ឈ្មោះ 'applications'
+      const { error } = await supabase
+        .from("applications")
+        .insert([res.data]); // res.data គឺដកស្រង់ចេញពី Zod validation រួចរាល់
+
+      if (error) {
+        throw error;
+      }
+
+      // បើជោគជ័យ និងគ្មាន error ទេ ប្តូរទៅ screen ជោគជ័យ
+      setSubmitted(true);
+    } catch (error: any) {
+      console.error("Error inserting data:", error);
+      alert("ការចុះឈ្មោះមានបញ្ហា: " + (error.message || "សូមព្យាយាមម្តងទៀត"));
+    } finally {
+      setLoading(false); // បិទ Loading វិញ ទោះបីជាជោគជ័យ ឬបរាជ័យ
+    }
   };
 
   return (
@@ -79,22 +103,11 @@ function ApplyPage() {
               className="grid grid-cols-1 gap-6 border border-white/10 bg-card p-8 md:grid-cols-2 md:p-10"
             >
               <Field label={t("f_name")} error={errors.name}>
-                <input
-                  name="name"
-                  type="text"
-                  required
-                  maxLength={100}
-                  className="form-input"
-                />
+                <input name="name" type="text" required maxLength={100} className="form-input" />
               </Field>
+              
               <Field label={t("f_phone")} error={errors.phone}>
-                <input
-                  name="phone"
-                  type="tel"
-                  required
-                  maxLength={20}
-                  className="form-input"
-                />
+                <input name="phone" type="tel" required maxLength={20} className="form-input" />
               </Field>
 
               <Field label={t("f_gender")} error={errors.gender}>
@@ -138,12 +151,21 @@ function ApplyPage() {
                 </Field>
               </div>
 
+              {/* 5. កែប្រែប៊ូតុង Submit ឱ្យដើរជាមួយ Loading state */}
               <div className="md:col-span-2">
                 <button
                   type="submit"
-                  className="w-full bg-gold py-4 text-xs font-bold uppercase tracking-[0.3em] text-navy-deep transition-colors hover:bg-foreground"
+                  disabled={loading} // បិទមិនឱ្យចុចដដែលៗពេលកំពុងផ្ញើទិន្នន័យ
+                  className="w-full bg-gold py-4 text-xs font-bold uppercase tracking-[0.3em] text-navy-deep transition-colors hover:bg-foreground flex items-center justify-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed"
                 >
-                  {t("f_submit")}
+                  {loading ? (
+                    <>
+                      <Loader2 className="size-4 animate-spin" />
+                      Please wait...
+                    </>
+                  ) : (
+                    t("f_submit")
+                  )}
                 </button>
               </div>
             </form>

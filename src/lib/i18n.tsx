@@ -15,12 +15,12 @@ export const dict = {
   apply_cta: { en: "Apply Now", km: "ចុះឈ្មោះឥឡូវ" },
 
   // brand
-  brand_full_en: { en: "Cambodian Speed Accurate Tactical Co., Ltd.", km: "Cambodian Speed Accurate Tactical Co., Ltd." },
-  brand_full_km: { en: "ខេមបូឌាន ស្ពីជ អាកឃ្យូរ៉េត ថាក់ថិចខល ឯ.ក", km: "ខេមបូឌាន ស្ពីជ អាកឃ្យូរ៉េត ថាក់ថិចខល ឯ.ក" },
+  brand_full_en: { en: "CAMBODIAN SPEED ACCURATE TACTIALCO.,LTD", km: "CAMBODIAN SPEED ACCURATE TACTIALCO.,LTD" },
+  brand_full_km: { en: "ក", km: "ខេមបូឌាន ស្ពីជ អាកឃ្យូរ៉េត​ ថាកថៀល ឯ.ក" },
   brand_tag: { en: "Training • Recruitment • Workforce Deployment", km: "បណ្តុះបណ្តាល • ជ្រើសរើស • ដាក់ពង្រាយកម្លាំងពលកម្ម" },
 
   // hero
-  hero_kicker: { en: "Established 2024 — Kingdom of Cambodia", km: "បង្កើតឡើងឆ្នាំ ២០២៤ — ព្រះរាជាណាចក្រកម្ពុជា" },
+  hero_kicker: { en: "Established 2025 — Kingdom of Cambodia", km: "បង្កើតឡើងឆ្នាំ ២០២៥ — ព្រះរាជាណាចក្រកម្ពុជា" },
   hero_title_1: { en: "Training", km: "បណ្តុះបណ្តាល" },
   hero_title_2: { en: "Elite Workforce", km: "កម្លាំងពលកម្មឯកទេស" },
   hero_lead: {
@@ -57,8 +57,8 @@ export const dict = {
   // about
   about_title: { en: "About the Academy", km: "អំពីសាលា" },
   about_overview: {
-    en: "Cambodian Speed Accurate Tactical Co., Ltd. (CSAT) is a professional training and workforce deployment company serving the security, safety, and technical sectors of the Kingdom of Cambodia.",
-    km: "ខេមបូឌាន ស្ពីជ អាកឃ្យូរ៉េត ថាក់ថិចខល ឯ.ក (CSAT) គឺជាក្រុមហ៊ុនបណ្តុះបណ្តាល និងដាក់ពង្រាយកម្លាំងពលកម្មជំនាញ បម្រើដល់វិស័យសន្តិសុខ សុវត្ថិភាព និងបច្ចេកទេសក្នុងព្រះរាជាណាចក្រកម្ពុជា។",
+    en: "CAMBODIAN SPEED ACCURATE TACTIALCO.,LTD (CSAT) is a professional training and workforce deployment company serving the security, safety, and technical sectors of the Kingdom of Cambodia.",
+    km: "ខេមបូឌាន ស្ពីជ អាកឃ្យូរ៉េត​ ថាកថៀល ឯ.ក (CSAT) គឺជាក្រុមហ៊ុនបណ្តុះបណ្តាល និងដាក់ពង្រាយកម្លាំងពលកម្មជំនាញ បម្រើដល់វិស័យសន្តិសុខ សុវត្ថិភាព និងបច្ចេកទេសក្នុងព្រះរាជាណាចក្រកម្ពុជា។",
   },
   vision_title: { en: "Our Vision", km: "ចក្ខុវិស័យ" },
   vision_body: {

@@ -61,9 +61,9 @@ function ContactPage() {
       <section className="bg-navy-deep py-20">
         <div className="container-page grid gap-10 lg:grid-cols-[1fr_1.2fr]">
           <div className="space-y-4">
-            <InfoCard Icon={Phone} label={t("c_phone")} value="+855 (0) 12 345 678" />
-            <InfoCard Icon={Mail} label={t("c_email")} value="info@csat-academy.com" />
-            <InfoCard Icon={Send} label={t("c_telegram")} value="@CSAT_Academy" />
+            <InfoCard Icon={Phone} label={t("c_phone")} value="+855 023 975 678" />
+            <InfoCard Icon={Mail} label={t("c_email")} value="cambodianspeed@gmail.com" />
+            <InfoCard Icon={Send} label={t("c_telegram")} value="@@Combodia_ccc" />
             <InfoCard Icon={MapPin} label={t("c_address")} value="Phnom Penh, Kingdom of Cambodia" />
 
             <div className="overflow-hidden border border-white/10">
